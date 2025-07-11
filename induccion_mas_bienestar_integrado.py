@@ -4,9 +4,10 @@ import streamlit.components.v1 as components  # Para incrustar Genially
 # Configuración de página
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
 
-# URL directa a la imagen desde GitHub (ajusta si es necesario)
+# URL directa de la imagen subida a Google Drive
 background_url = "https://drive.google.com/uc?export=view&id=16GSPB6SYsuXgPyMDyq_eGjPOjTXgAjlP"
 
+# Estilos personalizados con imagen de fondo
 st.markdown(f"""
     <style>
     .stApp {{
@@ -90,7 +91,6 @@ def modulo_evaluacion():
     </div>
     """, unsafe_allow_html=True)
 
-    # Incrustar Genially con iframe
     components.html(
         """
         <iframe title="ESCAPE GAME APLICATIVO" frameborder="0"
@@ -103,7 +103,7 @@ def modulo_evaluacion():
         height=600
     )
 
-# Lógica principal
+# Lógica de navegación
 if modulo == "Bienvenida y Entorno":
     modulo_entorno()
 elif modulo == "Evaluación":
