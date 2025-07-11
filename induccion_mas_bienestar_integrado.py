@@ -5,7 +5,7 @@ import streamlit.components.v1 as components  # Para incrustar Genially
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
 
 # URL directa a la imagen desde GitHub (ajusta si es necesario)
-background_url = "https://raw.githubusercontent.com/juan-tello/mas-bienestar/main/Imagen%20de%20WhatsApp%202025-07-10%20a%20las%2010.25.27%20AM.jpeg"
+background_url = "https://drive.google.com/uc?export=view&id=16GSPB6SYsuXgPyMDyq_eGjPOjTXgAjlP""
 
 # Estilos con imagen de fondo desde URL
 st.markdown(f"""
