@@ -1,20 +1,17 @@
 import streamlit as st
-from PIL import Image
-import base64
-import streamlit.components.v1 as components  # Import necesario para incrustar Genially
+import streamlit.components.v1 as components  # Para incrustar Genially
 
 # Configuración de página
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
 
-# Imagen de fondo
-image_path = "C:/Users/Hp/Downloads/PRUEBA PYTHON/WhatsApp Image 2025-07-10 at 10.25.27 AM.jpeg"
-with open(image_path, "rb") as img_file:
-    encoded_img = base64.b64encode(img_file.read()).decode()
+# URL directa a la imagen desde GitHub (ajusta si es necesario)
+background_url = "https://raw.githubusercontent.com/juan-tello/mas-bienestar/main/Imagen%20de%20WhatsApp%202025-07-10%20a%20las%2010.25.27%20AM.jpeg"
 
+# Estilos con imagen de fondo desde URL
 st.markdown(f"""
     <style>
     .stApp {{
-        background-image: url("data:image/jpeg;base64,{encoded_img}");
+        background-image: url("{background_url}");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -94,7 +91,7 @@ def modulo_evaluacion():
     </div>
     """, unsafe_allow_html=True)
 
-    # Incrustar Genially con el nuevo iframe
+    # Incrustar Genially con iframe
     components.html(
         """
         <iframe title="ESCAPE GAME APLICATIVO" frameborder="0"
