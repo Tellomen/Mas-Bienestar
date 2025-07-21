@@ -5,15 +5,14 @@ import pandas as pd
 # ------------------------- CONFIGURACIÓN DE PÁGINA --------------------------
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
 
-# URL directa al archivo XLSX en Google Drive
-XLSX_URL = "https://drive.google.com/uc?export=download&id=1sHq2UATtF5q_IINt82C0X_ah_m-ac5Et"
+# URL del Google Sheet exportado como CSV
+CSV_URL = "https://docs.google.com/spreadsheets/d/1sHq2UATtF5q_IINt82C0X_ah_m-ac5Et/export?format=csv"
 
 # ------------------------- CARGAR BASE DE TALENTO HUMANO ---------------------
-@st.cache_data(ttl=60)  # Se actualiza cada 60 segundos
+@st.cache_data(ttl=60)  # Cache por 60 segundos
 def cargar_talento_humano():
-    df = pd.read_excel(XLSX_URL)
-    # Normalizar columnas a minúsculas por consistencia
-    df.columns = df.columns.str.strip().str.lower()
+    df = pd.read_csv(CSV_URL)
+    df.columns = df.columns.str.strip().str.lower()  # Normaliza los nombres de columnas
     return df
 
 talento_humano = cargar_talento_humano()
@@ -55,7 +54,7 @@ def login():
             perfil_unificado = user_row['perfil unificado'].values[0]
 
             if password == "riesgo2020+":
-                if estado == "ACTIVO":
+                if estado.upper() == "ACTIVO":
                     st.session_state["autenticado"] = True
                     st.session_state["usuario"] = usuario
                     st.session_state["nombre"] = nombre
