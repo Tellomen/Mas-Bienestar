@@ -1,13 +1,26 @@
 import streamlit as st
-import streamlit.components.v1 as components  # Para incrustar Genially
+import streamlit.components.v1 as components
+import pandas as pd
 
-# Configuración de página
+# ------------------------- CONFIGURACIÓN DE PÁGINA --------------------------
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
 
-# URL directa de la imagen subida a Google Drive
+# URL directa al archivo XLSX en Google Drive
+XLSX_URL = "https://drive.google.com/uc?export=download&id=1sHq2UATtF5q_IINt82C0X_ah_m-ac5Et"
+
+# ------------------------- CARGAR BASE DE TALENTO HUMANO ---------------------
+@st.cache_data(ttl=60)  # Se actualiza cada 60 segundos
+def cargar_talento_humano():
+    df = pd.read_excel(XLSX_URL)
+    # Normalizar columnas a minúsculas por consistencia
+    df.columns = df.columns.str.strip().str.lower()
+    return df
+
+talento_humano = cargar_talento_humano()
+
+# ------------------------- IMAGEN DE FONDO ----------------------------------
 background_url = "https://drive.google.com/uc?export=view&id=16GSPB6SYsuXgPyMDyq_eGjPOjTXgAjlP"
 
-# Estilos personalizados con imagen de fondo
 st.markdown(f"""
     <style>
     .stApp {{
@@ -28,32 +41,41 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# Mensaje de bienvenida
-st.markdown("""
-<div class='welcome-box'>
-    <h1>¡Bienvenido(a) a la Inducción del Programa Más Bienestar!</h1>
-    <p style='font-size:18px;'>Conoce el entorno, tus funciones y aprende a usar el aplicativo institucional según tu rol profesional.</p>
-</div>
-""", unsafe_allow_html=True)
+# ------------------------- LOGIN --------------------------------------------
+def login():
+    st.markdown("<div class='welcome-box'><h2>🔐 Inicio de Sesión</h2></div>", unsafe_allow_html=True)
+    usuario = st.text_input("Usuario (Documento)")
+    password = st.text_input("Contraseña", type="password")
 
-# Iniciar recorrido
-if st.button("🚀 Iniciar recorrido"):
-    st.session_state["modulo"] = "Bienvenida y Entorno"
+    if st.button("Ingresar"):
+        user_row = talento_humano[talento_humano['usuario'].astype(str) == usuario]
+        if not user_row.empty:
+            estado = user_row['estado'].values[0]
+            nombre = user_row['nombre'].values[0]
+            perfil_unificado = user_row['perfil unificado'].values[0]
 
-# Menú lateral
-st.sidebar.title("Menú de Inducción")
-modulo = st.sidebar.selectbox("Selecciona un módulo:", [
-    "Bienvenida y Entorno", "Gestores", "Psicólogos", "Enfermeros(as)", "Evaluación"
-])
+            if password == "riesgo2020+":
+                if estado == "ACTIVO":
+                    st.session_state["autenticado"] = True
+                    st.session_state["usuario"] = usuario
+                    st.session_state["nombre"] = nombre
+                    st.session_state["perfil"] = perfil_unificado
+                    st.success(f"¡Bienvenido {nombre}!")
+                else:
+                    st.error(f"Tu estado es '{estado}'. Contacta a Talento Humano.")
+            else:
+                st.error("Contraseña incorrecta.")
+        else:
+            st.error("Usuario no encontrado en la base de Talento Humano.")
 
-# Diccionario por perfil
+# ------------------------- MÓDULOS POR PERFIL --------------------------------
 modulos_perfil = {
     "Gestores": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Toma de Medidas", "Tamizaje Apgar"],
     "Psicólogos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
     "Enfermeros(as)": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"]
 }
 
-# Funciones de módulo
+# ------------------------- FUNCIONES DE MÓDULO ------------------------------
 def modulo_entorno():
     st.markdown("""
     <div class='welcome-box'>
@@ -103,10 +125,31 @@ def modulo_evaluacion():
         height=600
     )
 
-# Lógica de navegación
-if modulo == "Bienvenida y Entorno":
-    modulo_entorno()
-elif modulo == "Evaluación":
-    modulo_evaluacion()
-elif modulo in modulos_perfil:
-    modulo_perfil(modulo, modulos_perfil[modulo])
+# ------------------------- CONTROL DE SESIÓN --------------------------------
+if "autenticado" not in st.session_state:
+    st.session_state["autenticado"] = False
+
+if not st.session_state["autenticado"]:
+    login()
+else:
+    perfil = st.session_state["perfil"]
+    st.sidebar.title(f"👤 {st.session_state['nombre']} ({perfil})")
+
+    # Botón de Cerrar Sesión
+    if st.sidebar.button("Cerrar Sesión"):
+        st.session_state["autenticado"] = False
+        st.experimental_rerun()
+
+    # Menú dinámico según el perfil
+    opciones = ["Bienvenida y Entorno", "Evaluación"]
+    if perfil in modulos_perfil:
+        opciones.append(perfil)
+
+    modulo = st.sidebar.selectbox("Selecciona un módulo:", opciones)
+
+    if modulo == "Bienvenida y Entorno":
+        modulo_entorno()
+    elif modulo == "Evaluación":
+        modulo_evaluacion()
+    elif modulo == perfil:
+        modulo_perfil(perfil, modulos_perfil[perfil])
