@@ -18,7 +18,7 @@ def cargar_talento_humano():
 talento_humano = cargar_talento_humano()
 
 # ------------------------- IMAGEN DE FONDO ----------------------------------
-background_url = "https://drive.google.com/uc?export=view&id=16GSPB6SYsuXgPyMDyq_eGjPOjTXgAjlP"
+background_url = "https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/e1210f110835eda506a064861da58aa4d1357e84/Toma%20Territorial.png"
 
 st.markdown(f"""
     <style>
