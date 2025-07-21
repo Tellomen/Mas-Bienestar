@@ -12,7 +12,7 @@ CSV_URL = "https://docs.google.com/spreadsheets/d/1sHq2UATtF5q_IINt82C0X_ah_m-ac
 @st.cache_data(ttl=60)  # Cache por 60 segundos
 def cargar_talento_humano():
     df = pd.read_csv(CSV_URL)
-    df.columns = df.columns.str.strip().str.lower()  # Normaliza los nombres de columnas
+    df.columns = df.columns.str.strip().str.lower()
     return df
 
 talento_humano = cargar_talento_humano()
@@ -53,7 +53,13 @@ def login():
             nombre = user_row['nombre'].values[0]
             perfil_unificado = user_row['perfil unificado'].values[0]
 
-            if password == "riesgo2020+":
+            # Condición de contraseña según perfil
+            if perfil_unificado.upper() == "ADMINISTRADOR":
+                acceso_correcto = (password == usuario)
+            else:
+                acceso_correcto = (password == "riesgo2020+")
+
+            if acceso_correcto:
                 if estado.upper() == "ACTIVO":
                     st.session_state["autenticado"] = True
                     st.session_state["usuario"] = usuario
@@ -141,7 +147,10 @@ else:
 
     # Menú dinámico según el perfil
     opciones = ["Bienvenida y Entorno", "Evaluación"]
-    if perfil in modulos_perfil:
+
+    if perfil.upper() == "ADMINISTRADOR":
+        opciones += list(modulos_perfil.keys())
+    elif perfil in modulos_perfil:
         opciones.append(perfil)
 
     modulo = st.sidebar.selectbox("Selecciona un módulo:", opciones)
@@ -150,5 +159,5 @@ else:
         modulo_entorno()
     elif modulo == "Evaluación":
         modulo_evaluacion()
-    elif modulo == perfil:
-        modulo_perfil(perfil, modulos_perfil[perfil])
+    elif modulo in modulos_perfil:
+        modulo_perfil(modulo, modulos_perfil[modulo])
