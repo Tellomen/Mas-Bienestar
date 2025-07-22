@@ -185,5 +185,5 @@ else:
     elif modulo in modulos_perfil:
         modulo_perfil(modulo, modulos_perfil[modulo]
     elif modulo == "Evaluación":
-        modulo_evaluacion()
+        modulo_evaluacion())
 
