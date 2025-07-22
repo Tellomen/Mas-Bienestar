@@ -53,7 +53,6 @@ def login():
             nombre = user_row['nombre'].values[0]
             perfil_unificado = user_row['perfil unificado'].values[0]
 
-            # Condición de contraseña según perfil
             if perfil_unificado.upper() == "ADMINISTRADOR":
                 acceso_correcto = (password == usuario)
             else:
@@ -88,6 +87,20 @@ modulos_perfil = {
     "Medicos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"]
 }
 
+# Lista de módulos nuevos para Eventos VSP
+modulos_vsp = [
+    "CRONICOS", "OTROS CASOS PRIORIZADOS", "ACOMPAÑAMIENTO PSICOSOCIAL",
+    "SALUD ORAL", "FAMILIAS CON GESTANTES", "FAMILIAS CON MENORES DE 5 AÑOS",
+    "MENORES CON EXCESO DE PESO", "APOYO PSICOLOGICO EN DUELO",
+    "CONDUCTA SUICIDA (INTENTO)", "DNT AGUDA, MODERADA O SEVERA",
+    "VIOLENCIA REITERADA", "SÍFILIS GESTACIONAL", "MORBILIDAD MATERNA EXTREMA",
+    "CONDUCTA SUICIDA (IDEACIÓN)", "BPN PRETÉRMNO", "SIFILIS CONGENITA",
+    "VIH GESTACIONAL", "VIOLENCIA EN GESTANTES", "BPN A TÉRMNO",
+    "MATERNAS ADOLESCENTES", "CANCER INFANTIL", "OBESIDAD GESTACIONAL",
+    "ERA IRA", "BAJO PESO GESTACIONAL", "CONDUCTA SUICIDA (AMENAZA)",
+    "HB GESTACIONAL", "CONDUCTA SUICIDA (CONSUMADO)"
+]
+
 # ------------------------- FUNCIONES DE MÓDULO ------------------------------
 def modulo_entorno():
     st.markdown("""
@@ -106,17 +119,23 @@ def modulo_entorno():
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
     subtitulo = st.selectbox("Selecciona un módulo a revisar:", modulos)
-    st.markdown(f"""
-    <div class='welcome-box'>
-        <h3>📘 Módulo: {subtitulo}</h3>
-        <ul>
-            <li><b>¿Qué es?</b> Descripción del propósito.</li>
-            <li><b>¿Cómo diligenciarlo?</b> Paso 1, 2 y 3.</li>
-            <li><b>Errores comunes</b> y recomendaciones.</li>
-        </ul>
-        <p>✅ Al finalizar, puedes realizar un quiz de refuerzo.</p>
-    </div>
-    """, unsafe_allow_html=True)
+
+    if subtitulo == "Eventos VSP":
+        subtitulo_vsp = st.selectbox("Selecciona un sub-módulo de Eventos VSP:", modulos_vsp)
+        st.markdown(f"<div class='welcome-box'><h3>📘 Submódulo: {subtitulo_vsp}</h3></div>", unsafe_allow_html=True)
+
+    else:
+        st.markdown(f"""
+        <div class='welcome-box'>
+            <h3>📘 Módulo: {subtitulo}</h3>
+            <ul>
+                <li><b>¿Qué es?</b> Descripción del propósito.</li>
+                <li><b>¿Cómo diligenciarlo?</b> Paso 1, 2 y 3.</li>
+                <li><b>Errores comunes</b> y recomendaciones.</li>
+            </ul>
+            <p>✅ Al finalizar, puedes realizar un quiz de refuerzo.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 def modulo_evaluacion():
     st.markdown("""
@@ -148,12 +167,10 @@ else:
     perfil = st.session_state["perfil"]
     st.sidebar.title(f"👤 {st.session_state['nombre']} ({perfil})")
 
-    # Botón de Cerrar Sesión
     if st.sidebar.button("Cerrar Sesión"):
         st.session_state["autenticado"] = False
         st.experimental_rerun()
 
-    # Menú dinámico según el perfil
     opciones = ["Bienvenida y Entorno", "Evaluación"]
 
     if perfil.upper() == "ADMINISTRADOR":
