@@ -9,7 +9,7 @@ st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
 CSV_URL = "https://docs.google.com/spreadsheets/d/1sHq2UATtF5q_IINt82C0X_ah_m-ac5Et/export?format=csv"
 
 # ------------------------- CARGAR BASE DE TALENTO HUMANO ---------------------
-@st.cache_data(ttl=60)  # Cache por 60 segundos
+@st.cache_data(ttl=60)
 def cargar_talento_humano():
     df = pd.read_csv(CSV_URL)
     df.columns = df.columns.str.strip().str.lower()
@@ -87,7 +87,6 @@ modulos_perfil = {
     "Medicos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"]
 }
 
-# Lista de módulos nuevos para Eventos VSP
 modulos_vsp = [
     "CRONICOS", "OTROS CASOS PRIORIZADOS", "ACOMPAÑAMIENTO PSICOSOCIAL",
     "SALUD ORAL", "FAMILIAS CON GESTANTES", "FAMILIAS CON MENORES DE 5 AÑOS",
@@ -123,7 +122,6 @@ def modulo_perfil(nombre, modulos):
     if subtitulo == "Eventos VSP":
         subtitulo_vsp = st.selectbox("Selecciona un sub-módulo de Eventos VSP:", modulos_vsp)
         st.markdown(f"<div class='welcome-box'><h3>📘 Submódulo: {subtitulo_vsp}</h3></div>", unsafe_allow_html=True)
-
     else:
         st.markdown(f"""
         <div class='welcome-box'>
@@ -136,6 +134,19 @@ def modulo_perfil(nombre, modulos):
             <p>✅ Al finalizar, puedes realizar un quiz de refuerzo.</p>
         </div>
         """, unsafe_allow_html=True)
+
+        # Solo para el módulo "Caracterización Familiar" mostrar el botón de Excalidraw
+        if subtitulo == "Caracterización Familiar":
+            st.markdown("""
+            <div class='welcome-box'>
+                <h3>🧩 Apoyo Visual Interactivo - Excalidraw</h3>
+                <p>Puedes explorar un mapa conceptual colaborativo para comprender mejor este módulo.</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+            if st.button("🔗 Abrir Mapa Interactivo Excalidraw"):
+                js = "window.open('https://excalidraw.com/#room=8bc7c09602dd78eb57c6,XztMNEItVnZc8nB8AazlRw')"
+                components.html(f"<script>{js}</script>", height=0)
 
 def modulo_evaluacion():
     st.markdown("""
@@ -186,4 +197,3 @@ else:
         modulo_perfil(modulo, modulos_perfil[modulo])
     elif modulo == "Evaluación":
         modulo_evaluacion()
-
