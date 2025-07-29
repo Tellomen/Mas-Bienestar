@@ -1,6 +1,8 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
+from pydub import AudioSegment
+from io import BytesIO
 
 # ------------------------- CONFIGURACIÓN DE PÁGINA --------------------------
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
@@ -9,7 +11,7 @@ st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
 CSV_URL = "https://docs.google.com/spreadsheets/d/1sHq2UATtF5q_IINt82C0X_ah_m-ac5Et/export?format=csv"
 
 # ------------------------- CARGAR BASE DE TALENTO HUMANO ---------------------
-@st.cache_data(ttl=60)  # Cache por 60 segundos
+@st.cache_data(ttl=60)
 def cargar_talento_humano():
     df = pd.read_csv(CSV_URL)
     df.columns = df.columns.str.strip().str.lower()
@@ -74,31 +76,21 @@ def login():
 
 # ------------------------- MÓDULOS POR PERFIL --------------------------------
 modulos_perfil = {
-    "Gestores": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Toma de Medidas", "Tamizaje Apgar"],
-    "Psicólogos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Enfermeros(as)": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Ambiental": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Terapeutas": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Odontologia": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Nutricion": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Etnicos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Embera": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Auxiliar del cuidado": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
-    "Medicos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"]
+    "Gestores": [...],
+    "Psicólogos": [...],
+    "Enfermeros(as)": [...],
+    "Ambiental": [...],
+    "Terapeutas": [...],
+    "Odontologia": [...],
+    "Nutricion": [...],
+    "Etnicos": [...],
+    "Embera": [...],
+    "Auxiliar del cuidado": [...],
+    "Medicos": [...]
 }
 
-# Lista de módulos nuevos para Eventos VSP
 modulos_vsp = [
-    "CRONICOS", "OTROS CASOS PRIORIZADOS", "ACOMPAÑAMIENTO PSICOSOCIAL",
-    "SALUD ORAL", "FAMILIAS CON GESTANTES", "FAMILIAS CON MENORES DE 5 AÑOS",
-    "MENORES CON EXCESO DE PESO", "APOYO PSICOLOGICO EN DUELO",
-    "CONDUCTA SUICIDA (INTENTO)", "DNT AGUDA, MODERADA O SEVERA",
-    "VIOLENCIA REITERADA", "SÍFILIS GESTACIONAL", "MORBILIDAD MATERNA EXTREMA",
-    "CONDUCTA SUICIDA (IDEACIÓN)", "BPN PRETÉRMNO", "SIFILIS CONGENITA",
-    "VIH GESTACIONAL", "VIOLENCIA EN GESTANTES", "BPN A TÉRMNO",
-    "MATERNAS ADOLESCENTES", "CANCER INFANTIL", "OBESIDAD GESTACIONAL",
-    "ERA IRA", "BAJO PESO GESTACIONAL", "CONDUCTA SUICIDA (AMENAZA)",
-    "HB GESTACIONAL", "CONDUCTA SUICIDA (CONSUMADO)"
+    "CRONICOS", "OTROS CASOS PRIORIZADOS", ...
 ]
 
 # ------------------------- FUNCIONES DE MÓDULO ------------------------------
@@ -116,6 +108,11 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
+    # Audio integrado
+    audio_file_path = "audio/descripcion_entorno.mp3"
+    audio = open(audio_file_path, "rb").read()
+    st.audio(audio, format='audio/mp3')
+
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
     subtitulo = st.selectbox("Selecciona un módulo a revisar:", modulos)
@@ -123,7 +120,6 @@ def modulo_perfil(nombre, modulos):
     if subtitulo == "Eventos VSP":
         subtitulo_vsp = st.selectbox("Selecciona un sub-módulo de Eventos VSP:", modulos_vsp)
         st.markdown(f"<div class='welcome-box'><h3>📘 Submódulo: {subtitulo_vsp}</h3></div>", unsafe_allow_html=True)
-
     else:
         st.markdown(f"""
         <div class='welcome-box'>
@@ -144,18 +140,12 @@ def modulo_evaluacion():
         <p>Explora el siguiente juego para reforzar tus conocimientos sobre el programa Más Bienestar.</p>
     </div>
     """, unsafe_allow_html=True)
-
-    components.html(
-        """
+    components.html("""
         <iframe title="ESCAPE GAME APLICATIVO" frameborder="0"
             width="100%" height="600"
             src="https://view.genial.ly/687159b48ee96fa859ffd0a4"
-            type="text/html" allowscriptaccess="always" allowfullscreen="true"
-            scrolling="yes" allownetworking="all"
-            style="border:none;"></iframe>
-        """,
-        height=600
-    )
+            allowfullscreen="true"></iframe>
+    """, height=600)
 
 # ------------------------- CONTROL DE SESIÓN --------------------------------
 if "autenticado" not in st.session_state:
@@ -172,7 +162,6 @@ else:
         st.experimental_rerun()
 
     opciones = ["Bienvenida y Entorno", "Evaluación"]
-
     if perfil.upper() == "ADMINISTRADOR":
         opciones += list(modulos_perfil.keys())
     elif perfil in modulos_perfil:
