@@ -108,11 +108,20 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Audio integrado
-    audio_file_path = "audio/descripcion_entorno.mp3"
-    audio = open(audio_file_path, "rb").read()
-    st.audio(audio, format='audio/mp3')
+    col1, col2 = st.columns([1, 2])
 
+    with col1:
+        st.image("https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif", width=250)
+
+    with col2:
+        st.audio("descripcion_induccion.mp3", format="audio/mp3")
+        with open("descripcion_induccion.mp3", "rb") as file:
+            st.download_button(
+                label="⬇️ Descargar audio de inducción",
+                data=file,
+                file_name="descripcion_induccion.mp3",
+                mime="audio/mpeg"
+            )
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
     subtitulo = st.selectbox("Selecciona un módulo a revisar:", modulos)
