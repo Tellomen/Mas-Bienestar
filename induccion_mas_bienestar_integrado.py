@@ -2,6 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 from io import BytesIO
+from PIL import Image
 
 # ------------------------- CONFIGURACIÓN DE PÁGINA --------------------------
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
@@ -75,21 +76,21 @@ def login():
 
 # ------------------------- MÓDULOS POR PERFIL --------------------------------
 modulos_perfil = {
-    "Gestores": [...],
-    "Psicólogos": [...],
-    "Enfermeros(as)": [...],
-    "Ambiental": [...],
-    "Terapeutas": [...],
-    "Odontologia": [...],
-    "Nutricion": [...],
-    "Etnicos": [...],
-    "Embera": [...],
-    "Auxiliar del cuidado": [...],
-    "Medicos": [...]
+    "Gestores": ["Módulo 1", "Módulo 2"],
+    "Psicólogos": ["Módulo 1", "Módulo 2"],
+    "Enfermeros(as)": ["Módulo 1", "Módulo 2"],
+    "Ambiental": ["Módulo 1", "Módulo 2"],
+    "Terapeutas": ["Módulo 1", "Módulo 2"],
+    "Odontologia": ["Módulo 1", "Módulo 2"],
+    "Nutricion": ["Módulo 1", "Módulo 2"],
+    "Etnicos": ["Módulo 1", "Módulo 2"],
+    "Embera": ["Módulo 1", "Módulo 2"],
+    "Auxiliar del cuidado": ["Módulo 1", "Módulo 2"],
+    "Medicos": ["Módulo 1", "Módulo 2"]
 }
 
 modulos_vsp = [
-    "CRONICOS", "OTROS CASOS PRIORIZADOS", ...
+    "CRONICOS", "OTROS CASOS PRIORIZADOS"
 ]
 
 # ------------------------- FUNCIONES DE MÓDULO ------------------------------
@@ -113,15 +114,10 @@ def modulo_entorno():
         st.image("https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif", width=250)
 
     with col2:
-        audio_url = "https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/descripcion_induccion.mp3"
-        st.audio(audio_url, format="audio/mp3")
-        st.download_button(
-            label="⬇️ Descargar audio de inducción",
-            data=audio_url,
-            file_name="descripcion_induccion.mp3",
-            mime="audio/mpeg"
-        )
-    
+        video_url = "https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4"
+        st.video(video_url)
+
+
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
     subtitulo = st.selectbox("Selecciona un módulo a revisar:", modulos)
@@ -141,6 +137,7 @@ def modulo_perfil(nombre, modulos):
             <p>✅ Al finalizar, puedes realizar un quiz de refuerzo.</p>
         </div>
         """, unsafe_allow_html=True)
+
 
 def modulo_evaluacion():
     st.markdown("""
