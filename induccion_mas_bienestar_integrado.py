@@ -107,15 +107,20 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Avatar animado
-    components.html("""
-    <iframe src="https://www.voki.com/site/pickup?scid=19463581&chsm=985ed7d26551d6d9c9b3e2cdb4be61ce" 
-            width="250" height="300" frameborder="0" allowfullscreen></iframe>
-    """, height=310)
+    col1, col2 = st.columns([1, 2])
 
-    # Reproductor de audio
-    audio_url = "descripcion_induccion.mp3"  # o URL raw desde GitHub
-    st.audio(audio_url, format="audio/mp3")
+    with col1:
+        st.image("https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif", width=250)
+
+    with col2:
+        audio_url = "https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/descripcion_induccion.mp3"
+        st.audio(audio_url, format="audio/mp3")
+        st.download_button(
+            label="⬇️ Descargar audio de inducción",
+            data=audio_url,
+            file_name="descripcion_induccion.mp3",
+            mime="audio/mpeg"
+        )
     
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
