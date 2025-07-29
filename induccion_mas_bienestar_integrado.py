@@ -108,15 +108,20 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([1, 2])
+    st.markdown("""
+    <div style='display: flex; justify-content: center;'>
+        <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
+    </div>
+    """, unsafe_allow_html=True)
 
-    with col1:
-        st.image("https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif", width=250)
-
-    with col2:
-        video_url = "https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4"
-        st.video(video_url)
-
+    st.markdown("""
+    <div style='display: flex; justify-content: center; margin-top: 20px;'>
+        <video width="480" controls>
+            <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
+    """, unsafe_allow_html=True)
 
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
@@ -137,7 +142,6 @@ def modulo_perfil(nombre, modulos):
             <p>✅ Al finalizar, puedes realizar un quiz de refuerzo.</p>
         </div>
         """, unsafe_allow_html=True)
-
 
 def modulo_evaluacion():
     st.markdown("""
