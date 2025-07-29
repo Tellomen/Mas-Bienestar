@@ -116,7 +116,7 @@ def modulo_entorno():
 
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
-        <video width="480" controls>
+        <video width="1258" height="687" controls>
             <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
             Tu navegador no soporta la etiqueta de video.
         </video>
