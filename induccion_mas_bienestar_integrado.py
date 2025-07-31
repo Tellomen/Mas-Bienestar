@@ -76,17 +76,17 @@ def login():
 
 # ------------------------- MÓDULOS POR PERFIL --------------------------------
 modulos_perfil = {
-    "Gestores": ["Módulo 1", "Módulo 2"],
-    "Psicólogos": ["Módulo 1", "Módulo 2"],
-    "Enfermeros(as)": ["Módulo 1", "Módulo 2"],
-    "Ambiental": ["Módulo 1", "Módulo 2"],
-    "Terapeutas": ["Módulo 1", "Módulo 2"],
-    "Odontologia": ["Módulo 1", "Módulo 2"],
-    "Nutricion": ["Módulo 1", "Módulo 2"],
-    "Etnicos": ["Módulo 1", "Módulo 2"],
-    "Embera": ["Módulo 1", "Módulo 2"],
-    "Auxiliar del cuidado": ["Módulo 1", "Módulo 2"],
-    "Medicos": ["Módulo 1", "Módulo 2"]
+    "Gestores": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Toma de Medidas", "Tamizaje Apgar"],
+    "Psicólogos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Enfermeros(as)": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Ambiental": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Terapeutas": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Odontologia": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Nutricion": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Etnicos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Embera": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Auxiliar del cuidado": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"],
+    "Medicos": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Tamizaje Apgar", "Eventos VSP"]
 }
 
 modulos_vsp = [
