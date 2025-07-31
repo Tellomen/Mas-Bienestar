@@ -157,34 +157,6 @@ def modulo_evaluacion():
             allowfullscreen="true"></iframe>
     """, height=600)
 
-def modulo_plan_cuidado():
-    st.markdown("""
-    <div class='welcome-box'>
-        <h2>🏥 PLAN DE CUIDADO FAMILIAR</h2>
-        <p>Este módulo está diseñado para guiar a los profesionales en el abordaje familiar desde un enfoque integral. Aquí se presentan herramientas visuales, contenidos multimedia y pasos claves para su implementación.</p>
-        <ul>
-            <li>Identificación de necesidades de cuidado.</li>
-            <li>Concertación de compromisos con la familia.</li>
-            <li>Seguimiento y documentación en el aplicativo.</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div style='display: flex; justify-content: center; margin-top: 20px;'>
-        <video width="1258" height="687" controls>
-            <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
-            Tu navegador no soporta la etiqueta de video.
-        </video>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div style='display: flex; justify-content: center; margin-top: 20px;'>
-        <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
-    </div>
-    """, unsafe_allow_html=True)
-
 # ------------------------- CONTROL DE SESIÓN --------------------------------
 if "autenticado" not in st.session_state:
     st.session_state["autenticado"] = False
@@ -199,7 +171,7 @@ else:
         st.session_state["autenticado"] = False
         st.experimental_rerun()
 
-    opciones = ["Bienvenida y Entorno", "Evaluación", "PLAN DE CUIDADO FAMILIAR"]
+    opciones = ["Bienvenida y Entorno", "Evaluación"]
     if perfil.upper() == "ADMINISTRADOR":
         opciones += list(modulos_perfil.keys())
     elif perfil in modulos_perfil:
@@ -209,9 +181,7 @@ else:
 
     if modulo == "Bienvenida y Entorno":
         modulo_entorno()
-    elif modulo == "Evaluación":
-        modulo_evaluacion()
-    elif modulo == "PLAN DE CUIDADO FAMILIAR":
-        modulo_plan_cuidado_familiar()
     elif modulo in modulos_perfil:
         modulo_perfil(modulo, modulos_perfil[modulo])
+    elif modulo == "Evaluación":
+        modulo_evaluacion()
