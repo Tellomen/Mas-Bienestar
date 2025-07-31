@@ -157,43 +157,33 @@ def modulo_evaluacion():
             allowfullscreen="true"></iframe>
     """, height=600)
 
-def modulo_plan_cuidado_familiar():
-    st.markdown("## PLAN CUIDADO FAMILIAR")
+def modulo_plan_cuidado():
+    st.markdown("""
+    <div class='welcome-box'>
+        <h2>🏥 PLAN DE CUIDADO FAMILIAR</h2>
+        <p>Este módulo está diseñado para guiar a los profesionales en el abordaje familiar desde un enfoque integral. Aquí se presentan herramientas visuales, contenidos multimedia y pasos claves para su implementación.</p>
+        <ul>
+            <li>Identificación de necesidades de cuidado.</li>
+            <li>Concertación de compromisos con la familia.</li>
+            <li>Seguimiento y documentación en el aplicativo.</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.markdown("""
-            <div style="border: 2px solid #ccc; border-radius: 15px; padding: 10px; height: 400px; width: 100%; text-align: center; background-color: #f5f5f5;">
-                <p><b>[Video de Bienvenida]</b></p>
-                <img src="https://img.icons8.com/ios-filled/100/play-button-circled.png"/>
-                <p>Video explicativo del módulo</p>
-            </div>
-        """, unsafe_allow_html=True)
-    with col2:
-        st.markdown("#### Diligenciamiento aplicativo GITAPPS")
-        st.write("""
-        En el marco de la implementación del Modelo Más Bienestar, este módulo permite abordar integralmente las condiciones de salud, entorno y necesidades sociales de las familias.
-        """)
+    st.markdown("""
+    <div style='display: flex; justify-content: center; margin-top: 20px;'>
+        <video width="1258" height="687" controls>
+            <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.markdown("---")
-    st.subheader("Líneas Temáticas del Plan de Cuidado Familiar")
-
-    temas = {
-        "Gestantes": "**Embarazadas con Más Bienestar, Ángeles Guardianes**\n\nAcompañamiento a gestantes con enfoque integral.",
-        "Infancia": "**Promoción de la Alimentación Saludable**\n\n- Prevención de IRA\n- Lactancia materna\n- Pautas de crianza",
-        "Crónicos": "**Condiciones Crónicas**\n\n- Autocuidado\n- Actividad física\n- Seguimiento clínico",
-        "Salud Mental": "**Salud Mental Familiar**\n\n- Estrategias de afrontamiento\n- Duelo\n- Pautas de crianza",
-        "Salud Bucal": "**Cuidado Bucal**\n\n- Higiene\n- Educación preventiva\n- Autocuidado",
-        "Salud Ambiental": "**Ambiente Saludable**\n\n- Vivienda\n- Agricultura urbana\n- Riesgos ambientales",
-        "Discapacidad y Cuidadores": "**Rehabilitación Comunitaria**\n\n- Apoyo a cuidadores\n- Inclusión\n- Autonomía funcional"
-    }
-
-    for tema, contenido in temas.items():
-        with st.expander(f"📌 {tema}", expanded=False):
-            st.markdown(contenido)
-
-    st.markdown("---")
-    st.caption("Módulo en construcción – Herramienta digital del Modelo Más Bienestar")
+    st.markdown("""
+    <div style='display: flex; justify-content: center; margin-top: 20px;'>
+        <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ------------------------- CONTROL DE SESIÓN --------------------------------
 if "autenticado" not in st.session_state:
