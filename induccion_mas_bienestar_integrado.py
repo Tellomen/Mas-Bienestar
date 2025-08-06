@@ -108,6 +108,7 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
+    # Video de bienvenida
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
         <video width="1258" height="687" controls>
@@ -117,22 +118,25 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
+    # Avatar animado
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
         <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
     </div>
     """, unsafe_allow_html=True)
 
-        components.html("""
-    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-        <iframe title="Modulo de Bienvenida" frameborder="0" width="1257px" height="732px"
-            style="border: none;"
-            src="https://view.genially.com/68913d5fcb9d97c53e1192d6" 
-            type="text/html" allowscriptaccess="always" allowfullscreen="true" 
-            scrolling="yes" allownetworking="all">
-        </iframe>
-    </div>
+    # Genially embebido en tamaño específico
+    components.html("""
+        <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+            <iframe title="Modulo de Bienvenida" frameborder="0" width="1257px" height="732px"
+                style="border: none;"
+                src="https://view.genially.com/68913d5fcb9d97c53e1192d6"
+                type="text/html" allowscriptaccess="always" allowfullscreen="true"
+                scrolling="yes" allownetworking="all">
+            </iframe>
+        </div>
     """, height=750)
+
 
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
