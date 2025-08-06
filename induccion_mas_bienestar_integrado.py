@@ -102,7 +102,7 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Video justo debajo del texto principal
+    # Video
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 10px; margin-bottom: 20px;'>
         <video width="1257" height="732" controls>
@@ -112,7 +112,20 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Continúa el resto del texto debajo del video
+    # Plantilla Genially embebida
+    st.markdown("""
+    <div style='margin-top: 20px;'>
+        <h3 style='color: white;'>🌐 Plantilla Interactiva Genially</h3>
+        <iframe title="Modulo de Bienvenida"
+            src="https://view.genial.ly/68913d5fcb9d97c53e1192d6"
+            width="1257"
+            height="732"
+            style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+        </iframe>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Texto adicional debajo del video
     st.markdown("""
     <div class='welcome-box'>
         <p>Es una estrategia integral de atención en salud familiar y comunitaria.</p>
@@ -124,28 +137,12 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Avatar animado
+    # Avatar
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
         <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
     </div>
     """, unsafe_allow_html=True)
-
-    # Genially embebido al final
-    components.html("""
-    <div style="display: flex; justify-content: center; margin-top: 30px;">
-        <iframe title="Modulo de Bienvenida"
-            src="https://view.genially.com/68913d5fcb9d97c53e1192d6"
-            width="1257"
-            height="732"
-            style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
-            allowfullscreen="true"
-            scrolling="yes"
-            allowscriptaccess="always"
-            allownetworking="all">
-        </iframe>
-    </div>
-    """, height=800)
 
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
