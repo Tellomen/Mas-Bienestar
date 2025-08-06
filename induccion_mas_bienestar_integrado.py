@@ -138,7 +138,7 @@ def modulo_entorno():
             src="https://view.genial.ly/68913d5fcb9d97c53e1192d6"
             width="1257"
             height="732"
-            style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);'>
+            style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
         </iframe>
     </div>
     """, unsafe_allow_html=True)
