@@ -143,24 +143,6 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Texto adicional debajo del video
-    st.markdown("""
-    <div class='welcome-box'>
-        <p>Es una estrategia integral de atención en salud familiar y comunitaria.</p>
-        <ul>
-            <li>Trabajo interdisciplinario.</li>
-            <li>Articulación con redes institucionales y comunitarias.</li>
-            <li>Aplicativo de gestión creado por la Secretaría Distrital de Salud.</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Avatar
-    st.markdown("""
-    <div style='display: flex; justify-content: center; margin-top: 20px;'>
-        <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
-    </div>
-    """, unsafe_allow_html=True)
     
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
