@@ -99,22 +99,28 @@ def modulo_entorno():
     <div class='welcome-box'>
         <h2>🌍 Bienvenida y Descripción del Entorno</h2>
         <p><b>Bienvenido(a) al proceso de inducción del programa Más Bienestar.</b></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Video justo debajo del texto principal
+    st.markdown("""
+    <div style='display: flex; justify-content: center; margin-top: 10px; margin-bottom: 20px;'>
+        <video width="1257" height="732" controls>
+            <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Continúa el resto del texto debajo del video
+    st.markdown("""
+    <div class='welcome-box'>
         <p>Es una estrategia integral de atención en salud familiar y comunitaria.</p>
         <ul>
             <li>Trabajo interdisciplinario.</li>
             <li>Articulación con redes institucionales y comunitarias.</li>
             <li>Aplicativo de gestión creado por la Secretaría Distrital de Salud.</li>
         </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Video de bienvenida (tamaño ajustado)
-    st.markdown("""
-    <div style='display: flex; justify-content: center; margin-top: 20px;'>
-        <video width="1257" height="732" controls>
-            <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
-            Tu navegador no soporta la etiqueta de video.
-        </video>
     </div>
     """, unsafe_allow_html=True)
 
@@ -125,7 +131,7 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Genially embebido (tamaño exacto 1257 x 732)
+    # Genially embebido al final
     components.html("""
     <div style="display: flex; justify-content: center; margin-top: 30px;">
         <iframe title="Modulo de Bienvenida"
