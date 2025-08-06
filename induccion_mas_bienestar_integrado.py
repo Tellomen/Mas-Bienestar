@@ -123,6 +123,10 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
+    # Avatar embebido desde archivo HTML en GitHub
+    avatar_url = "https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/.devcontainer/Avatar/index_avatar_embebido.html"
+    components.iframe(src=avatar_url, width=1257, height=732, scrolling=True)
+
     # Plantilla Genially embebida centrada
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
