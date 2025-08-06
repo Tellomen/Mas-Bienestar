@@ -3,27 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <title>Avatar</title>
-  <link rel="stylesheet" href="avatar.css">
+
+  <!-- CSS embebido -->
+  <style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+    }
+
+    canvas#avatar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .actions-container {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 25px;
+        border-radius: 10px;
+        color: white;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .actions-title {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .actions button {
+        margin: 0 10px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #2196F3;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .actions button:hover {
+        background-color: #0b7dda;
+    }
+  </style>
 </head>
 <body>
 
-  <canvas id="avatar"></canvas>
+<canvas id="avatar"></canvas>
 
-  <div class="actions-container">
-        <h2 class="actions-title">Acciones Activas</h2>
-        <div class="actions">
-            <button id="actionsFlickUp" class="active">Feliz</button>
-            <button id="actionsTap" class="active">Aceptación</button>
-            <button id="actionsFlickDown" class="active">Bailar</button>
-            <button id="actionsRaiseArms" class="active">Interactuar</button>
-        </div>
+<div class="actions-container">
+    <h2 class="actions-title">Acciones Activas</h2>
+    <div class="actions">
+        <button id="actionsFlickUp" class="active">Feliz</button>
+        <button id="actionsTap" class="active">Aceptación</button>
+        <button id="actionsFlickDown" class="active">Bailar</button>
+        <button id="actionsRaiseArms" class="active">Interactuar</button>
     </div>
-  
-  <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.2/dist/browser/pixi.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
-  <script src="avatar.js"></script>
+</div>
+
+<!-- Scripts remotos necesarios -->
+<script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.2/dist/browser/pixi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
+
+<!-- JS embebido -->
+<script>
+    const modelPath = "https://cdn.jsdelivr.net/gh/dylanNew/live2d/models/shizuku/shizuku.model3.json";
+
+    async function loadAvatar() {
+        const app = new PIXI.Application({
+            view: document.getElementById("avatar"),
+            autoStart: true,
+            resizeTo: window,
+            transparent: true
+        });
+
+        const model = await PIXI.live2d.Live2DModel.from(modelPath);
+        app.stage.addChild(model);
+
+        model.scale.set(0.3);
+        model.x = innerWidth / 2;
+        model.y = innerHeight / 1.2;
+
+        model.interactive = true;
+
+        document.getElementById("actionsFlickUp").onclick = () => model.motion("TapBody");
+        document.getElementById("actionsTap").onclick = () => model.motion("TouchHead");
+        document.getElementById("actionsFlickDown").onclick = () => model.motion("Dance");
+        document.getElementById("actionsRaiseArms").onclick = () => model.expression("smile");
+    }
+
+    loadAvatar();
+</script>
 
 </body>
 </html>
