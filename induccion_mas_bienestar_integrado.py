@@ -203,8 +203,8 @@ else:
 
     if modulo == "Bienvenida y Entorno":
         modulo_entorno()
-    elif modulo == "APLICATIVO GITAPPS":
-    aplicativo_gitapps()
+    elif seleccion == "APLICATIVO GITAPPS":
+        aplicativo_gitapps()
     elif modulo in modulos_perfil:
         modulo_perfil(modulo, modulos_perfil[modulo])
     elif modulo == "Evaluación":
