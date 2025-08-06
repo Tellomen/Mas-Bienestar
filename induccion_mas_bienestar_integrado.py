@@ -201,11 +201,11 @@ else:
 
     modulo = st.sidebar.selectbox("Selecciona un módulo:", opciones)
 
-    if modulo == "Bienvenida y Entorno":
-        modulo_entorno()
-    elif seleccion == "APLICATIVO GITAPPS":
-        aplicativo_gitapps()
-    elif modulo in modulos_perfil:
-        modulo_perfil(modulo, modulos_perfil[modulo])
-    elif modulo == "Evaluación":
-        modulo_evaluacion()
+if modulo == "Bienvenida y Entorno":
+    modulo_entorno()
+elif modulo == "APLICATIVO GITAPPS":
+    aplicativo_gitapps()
+elif modulo in modulos_perfil:
+    modulo_perfil(modulo, modulos_perfil[modulo])
+elif modulo == "Evaluación":
+    modulo_evaluacion()
