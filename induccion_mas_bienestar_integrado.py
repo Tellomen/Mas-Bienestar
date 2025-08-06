@@ -127,16 +127,19 @@ def modulo_entorno():
 
     # Genially embebido en tamaño específico
     components.html("""
-        <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
-            <iframe title="Modulo de Bienvenida" frameborder="0" width="1257px" height="732px"
-                style="border: none;"
-                src="https://view.genially.com/68913d5fcb9d97c53e1192d6"
-                type="text/html" allowscriptaccess="always" allowfullscreen="true"
-                scrolling="yes" allownetworking="all">
-            </iframe>
-        </div>
-    """, height=750)
-
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <iframe title="Modulo de Bienvenida"
+            src="https://view.genially.com/68913d5fcb9d97c53e1192d6"
+            width="1257"
+            height="732"
+            style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);"
+            allowfullscreen="true"
+            scrolling="yes"
+            allowscriptaccess="always"
+            allownetworking="all">
+        </iframe>
+    </div>
+""", height=800)
 
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
