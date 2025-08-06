@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
+import os
 from io import BytesIO
 from PIL import Image
 from aplicativo_gitapps import aplicativo_gitapps
@@ -123,9 +124,15 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Avatar embebido desde archivo HTML en GitHub
-    avatar_url = "https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/.devcontainer/Avatar/index_avatar_embebido.html"
-    components.iframe(src=avatar_url, width=1257, height=732, scrolling=True)
+    # Avatar embebido desde archivo HTML local
+avatar_path = os.path.join(".devcontainer", "Avatar", "index_avatar_embebido.html")
+
+if os.path.exists(avatar_path):
+    with open(avatar_path, 'r', encoding='utf-8') as f:
+        html_avatar = f.read()
+    components.html(html_avatar, height=732, width=1257, scrolling=True)
+else:
+    st.error("No se encontró el archivo del avatar embebido.")
 
     # Plantilla Genially embebida centrada
     st.markdown("""
