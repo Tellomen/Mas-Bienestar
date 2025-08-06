@@ -1,4 +1,3 @@
-
 import streamlit as st
 
 def aplicativo_gitapps():
@@ -29,8 +28,19 @@ def aplicativo_gitapps():
         mostrar_tamizajes()
 
 def mostrar_caracterizacion():
-    st.header("📌 Submódulo: Caracterización")
-    st.info("Aquí irá el contenido de caracterización familiar o individual.")
+    st.markdown("<h2 style='text-align: center;'>📌 Submódulo: Caracterización</h2>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style='background-color: black; padding: 20px; border-radius: 10px; color: white;'>
+        <h3>¿Qué es?</h3>
+        <p>Descripción del propósito.</p>
+    </div>
+    <br>
+    <div style='background-color: black; padding: 20px; border-radius: 10px; color: white;'>
+        <h3>¿Cómo diligenciarlo?</h3>
+        <p>Paso 1, 2 y 3.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def mostrar_plan_cuidado():
     st.header("📝 Submódulo: Plan de Cuidado")
