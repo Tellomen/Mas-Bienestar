@@ -1,0 +1,89 @@
+html,
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f1f1f1;
+}
+
+#avatar {
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    width: 280px;
+    height: 420px;
+    z-index: 1000;
+}
+
+button {
+    position: relative;
+    margin: 20px;
+    z-index: 1;
+}
+
+.actions-container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.actions-title {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.actions button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #e0e0e0;
+    color: #555;
+}
+
+.actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.actions button.active {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+#actionsFlickUp.active {
+    background-color: #2196F3;
+    /* Azul */
+}
+
+#actionsTap.active {
+    background-color: #FF9800;
+    /* Naranja */
+}
+
+#actionsFlickDown.active {
+    background-color: #9C27B0;
+    /* Morado */
+}
+
+#actionsRaiseArms.active {
+    background-color: #F44336;
+    /* Rojo */
+}
