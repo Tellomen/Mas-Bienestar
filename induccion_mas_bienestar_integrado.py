@@ -195,7 +195,7 @@ else:
 
     opciones = ["Bienvenida y Entorno", "Evaluación"]
     if perfil.upper() == "ADMINISTRADOR":
-    opciones += list(modulos_perfil.keys()) + ["APLICATIVO GITAPPS"]
+        opciones += list(modulos_perfil.keys()) + ["APLICATIVO GITAPPS"]
     elif perfil in modulos_perfil:
         opciones.append(perfil)
 
