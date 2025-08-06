@@ -44,7 +44,22 @@ st.markdown(f"""
 
 # ------------------------- LOGIN --------------------------------------------
 def login():
-    st.markdown("<div class='welcome-box'><h2>🔐 Inicio de Sesión</h2></div>", unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+    .custom-success {
+        background-color: #000000;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    </style>
+    <div class='welcome-box'><h2>🔐 Inicio de Sesión</h2></div>
+    """, unsafe_allow_html=True)
+
     usuario = st.text_input("Usuario (Documento)")
     password = st.text_input("Contraseña", type="password")
 
@@ -66,14 +81,18 @@ def login():
                     st.session_state["usuario"] = usuario
                     st.session_state["nombre"] = nombre
                     st.session_state["perfil"] = perfil_unificado
-                    st.success(f"¡Bienvenido {nombre}!")
+                    st.markdown(f"""
+                        <div class='custom-success'>
+                            ¡Bienvenido {nombre}!
+                        </div>
+                    """, unsafe_allow_html=True)
                 else:
                     st.error(f"Tu estado es '{estado}'. Contacta a Talento Humano.")
             else:
                 st.error("Contraseña incorrecta.")
         else:
             st.error("Usuario no encontrado en la base de Talento Humano.")
-
+            
 # ------------------------- MÓDULOS POR PERFIL --------------------------------
 modulos_perfil = {
     "Gestores": ["Caracterización Familiar", "Plan de Cuidado Familiar", "Compromisos Concertados", "Toma de Alertas", "Toma de Medidas", "Tamizaje Apgar"],
@@ -119,7 +138,7 @@ def modulo_entorno():
             src="https://view.genial.ly/68913d5fcb9d97c53e1192d6"
             width="1257"
             height="732"
-            style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+            style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);'>
         </iframe>
     </div>
     """, unsafe_allow_html=True)
@@ -142,7 +161,7 @@ def modulo_entorno():
         <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
     </div>
     """, unsafe_allow_html=True)
-
+    
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
     subtitulo = st.selectbox("Selecciona un módulo a revisar:", modulos)
