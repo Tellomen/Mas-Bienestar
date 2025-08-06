@@ -124,16 +124,6 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Avatar embebido desde archivo HTML local
-avatar_path = os.path.join(".devcontainer", "Avatar", "index_avatar_embebido.html")
-
-if os.path.exists(avatar_path):
-    with open(avatar_path, 'r', encoding='utf-8') as f:
-        html_avatar = f.read()
-    components.html(html_avatar, height=732, width=1257, scrolling=True)
-else:
-    st.error("No se encontró el archivo del avatar embebido.")
-
     # Plantilla Genially embebida centrada
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
