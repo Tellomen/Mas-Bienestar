@@ -116,8 +116,8 @@ modulos_vsp = [
 def modulo_entorno():
     st.markdown("""
     <div class='welcome-box'>
-        <h2>🌍 Bienvenida y Descripción del Entorno</h2>
-        <p><b>Bienvenido(a) al proceso de inducción del programa Más Bienestar.</b></p>
+        <h2>🌍 Bienvenido a los Equipos Mas Bienestar Para tu Hogar</h2>
+        <p><b>Bienvenido(a) al proceso de inducción  del programa Más Bienestar.</b></p>
     </div>
     """, unsafe_allow_html=True)
 
