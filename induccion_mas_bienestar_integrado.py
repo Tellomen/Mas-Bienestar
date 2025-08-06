@@ -108,10 +108,10 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Video de bienvenida
+    # Video de bienvenida (tamaño ajustado)
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
-        <video width="1258" height="687" controls>
+        <video width="1257" height="732" controls>
             <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
             Tu navegador no soporta la etiqueta de video.
         </video>
@@ -125,7 +125,7 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Genially embebido en tamaño específico
+    # Genially embebido (tamaño exacto 1257 x 732)
     components.html("""
     <div style="display: flex; justify-content: center; margin-top: 30px;">
         <iframe title="Modulo de Bienvenida"
@@ -139,7 +139,7 @@ def modulo_entorno():
             allownetworking="all">
         </iframe>
     </div>
-""", height=800)
+    """, height=800)
 
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
