@@ -9,7 +9,7 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Video debajo del texto
+    # Video justo debajo del texto principal
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 10px; margin-bottom: 20px;'>
         <video width="1257" height="732" controls>
@@ -19,7 +19,7 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Más texto informativo
+    # Continúa el resto del texto debajo del video
     st.markdown("""
     <div class='welcome-box'>
         <p>Es una estrategia integral de atención en salud familiar y comunitaria.</p>
@@ -31,17 +31,24 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Avatar
+    # Avatar animado
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
         <img src='https://media.tenor.com/lPZZzG9NPuoAAAAi/avatar-speaking.gif' width='180'>
     </div>
     """, unsafe_allow_html=True)
 
-    # Botón para avanzar
-    if st.button("👉 Siguiente"):
-        st.session_state.entorno_pagina = "genially"
-
+    # Botón que abre Genially en una nueva pestaña
+    st.markdown("""
+    <div style='text-align: center; margin-top: 40px;'>
+        <a href="https://view.genially.com/68913d5fcb9d97c53e1192d6" target="_blank">
+            <button style="font-size:18px; padding: 12px 30px; background-color: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Siguiente
+            </button>
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
 def modulo_genially():
     st.markdown("## 🧩 Módulo Interactivo - Plantilla")
     st.markdown("A continuación, puedes explorar la plantilla interactiva:")
