@@ -3,6 +3,7 @@ import streamlit.components.v1 as components
 import pandas as pd
 from io import BytesIO
 from PIL import Image
+from aplicativo_gitapps import aplicativo_gitapps
 
 # ------------------------- CONFIGURACIÓN DE PÁGINA --------------------------
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
@@ -194,7 +195,7 @@ else:
 
     opciones = ["Bienvenida y Entorno", "Evaluación"]
     if perfil.upper() == "ADMINISTRADOR":
-        opciones += list(modulos_perfil.keys())
+    opciones += list(modulos_perfil.keys()) + ["APLICATIVO GITAPPS"]
     elif perfil in modulos_perfil:
         opciones.append(perfil)
 
@@ -202,6 +203,8 @@ else:
 
     if modulo == "Bienvenida y Entorno":
         modulo_entorno()
+    elif modulo == "APLICATIVO GITAPPS":
+    aplicativo_gitapps()
     elif modulo in modulos_perfil:
         modulo_perfil(modulo, modulos_perfil[modulo])
     elif modulo == "Evaluación":
