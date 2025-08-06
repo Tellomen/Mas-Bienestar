@@ -2,19 +2,15 @@ import streamlit as st
 
 def aplicativo_gitapps():
     st.markdown("""
-    <div style='background-color: black; padding: 20px; border-radius: 10px; text-align: center;'>
-        <h2 style='color: white;'>🧩 APLICATIVO GITAPPS</h2>
-        <p style='color: white;'>Selecciona uno de los submódulos para continuar.</p>
+    
+    <div class='welcome-box'>
+        <h2>🧩 APLICATIVO GITAPPS</h2>
+        <p>Selecciona uno de los submódulos para continuar.</p>
     </div>
+
     """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <div style='background-color: black; padding: 15px; border-radius: 10px; margin-top: 20px;'>
-        <label style='color: white; font-weight: bold;'>Selecciona un submódulo:</label>
-    </div>
-    """, unsafe_allow_html=True)
-
-    submodulo = st.selectbox("", [
+    submodulo = st.selectbox("Selecciona un submódulo:", [
         "Caracterización",
         "Plan de Cuidado",
         "Compromisos",
@@ -34,21 +30,46 @@ def aplicativo_gitapps():
         mostrar_tamizajes()
 
 def mostrar_caracterizacion():
-    st.header("📌 Submódulo: Caracterización")
-    st.info("Aquí irá el contenido de caracterización familiar o individual.")
+    st.markdown("""
+    <div class='welcome-box'>
+        <h3>📌 Submódulo: Caracterización</h3>
+        <ul>
+            <li><b>¿Qué es?</b> Descripción del propósito.</li>
+            <li><b>¿Cómo diligenciarlo?</b> Paso 1, 2 y 3.</li>
+            <li><b>Errores comunes</b> y recomendaciones.</li>
+        </ul>
+        <p>✅ Al finalizar, puedes realizar un quiz de refuerzo.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def mostrar_plan_cuidado():
-    st.header("📝 Submódulo: Plan de Cuidado")
-    st.info("Aquí se diseña el plan de cuidado para la familia o el paciente.")
+    st.markdown("""
+    <div class='welcome-box'>
+        <h3>📝 Submódulo: Plan de Cuidado</h3>
+        <p>Aquí se diseña el plan de cuidado para la familia o el paciente.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def mostrar_compromisos():
-    st.header("🤝 Submódulo: Compromisos")
-    st.info("Aquí se registran los compromisos adquiridos entre el equipo y la familia.")
+    st.markdown("""
+    <div class='welcome-box'>
+        <h3>🤝 Submódulo: Compromisos</h3>
+        <p>Aquí se registran los compromisos adquiridos entre el equipo y la familia.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def mostrar_alertas():
-    st.header("🚨 Submódulo: Alertas")
-    st.info("Aquí se identifican y gestionan alertas clínicas o sociales.")
+    st.markdown("""
+    <div class='welcome-box'>
+        <h3>🚨 Submódulo: Alertas</h3>
+        <p>Aquí se identifican y gestionan alertas clínicas o sociales.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 def mostrar_tamizajes():
-    st.header("🔍 Submódulo: Tamizajes")
-    st.info("Aquí se presentan los resultados de tamizajes aplicados.")
+    st.markdown("""
+    <div class='welcome-box'>
+        <h3>🔍 Submódulo: Tamizajes</h3>
+        <p>Aquí se presentan los resultados de tamizajes aplicados.</p>
+    </div>
+    """, unsafe_allow_html=True)
