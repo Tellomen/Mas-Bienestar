@@ -112,10 +112,9 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    # Plantilla Genially embebida
+    # Plantilla Genially embebida centrada
     st.markdown("""
-    <div style='margin-top: 20px;'>
-        <h3 style='color: white;'>🌐 Plantilla Interactiva Genially</h3>
+    <div style='display: flex; justify-content: center; margin-top: 20px;'>
         <iframe title="Modulo de Bienvenida"
             src="https://view.genial.ly/68913d5fcb9d97c53e1192d6"
             width="1257"
