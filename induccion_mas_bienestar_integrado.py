@@ -123,18 +123,16 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
-    components.html("""
-    <div style="width: 100%;">
-        <div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;">
-            <iframe title="Modulo de Bienvenida" frameborder="0" width="1200px" height="675px"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                src="https://view.genially.com/68913d5fcb9d97c53e1192d6" 
-                type="text/html" allowscriptaccess="always" allowfullscreen="true" 
-                scrolling="yes" allownetworking="all">
-            </iframe>
-        </div>
+        components.html("""
+    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+        <iframe title="Modulo de Bienvenida" frameborder="0" width="1257px" height="732px"
+            style="border: none;"
+            src="https://view.genially.com/68913d5fcb9d97c53e1192d6" 
+            type="text/html" allowscriptaccess="always" allowfullscreen="true" 
+            scrolling="yes" allownetworking="all">
+        </iframe>
     </div>
-    """, height=700)
+    """, height=750)
 
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
