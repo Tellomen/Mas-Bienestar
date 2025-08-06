@@ -143,6 +143,13 @@ def modulo_entorno():
     </div>
     """, unsafe_allow_html=True)
 
+    # Mensaje de bienvenida con estilo mejorado
+    st.markdown("""
+    <div style="background-color: rgba(255, 255, 255, 0.9); color: #004d40; padding: 15px; border-radius: 10px; text-align: center; font-size: 18px; font-weight: bold; box-shadow: 0 0 10px rgba(0,0,0,0.3); margin-top: 20px;">
+        ¡Bienvenido JUAN PABLO TELLO MENDOZA!
+    </div>
+    """, unsafe_allow_html=True)
+
 def modulo_perfil(nombre, modulos):
     st.markdown(f"<div class='welcome-box'><h2>🧑‍💼 Inducción para {nombre}</h2></div>", unsafe_allow_html=True)
     subtitulo = st.selectbox("Selecciona un módulo a revisar:", modulos)
