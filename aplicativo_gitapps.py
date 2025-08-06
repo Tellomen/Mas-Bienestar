@@ -2,10 +2,12 @@ import streamlit as st
 
 def aplicativo_gitapps():
     st.markdown("""
-    <div style='text-align: center;'>
+    
+    <div class='welcome-box'>
         <h2>🧩 APLICATIVO GITAPPS</h2>
         <p>Selecciona uno de los submódulos para continuar.</p>
     </div>
+
     """, unsafe_allow_html=True)
 
     submodulo = st.selectbox("Selecciona un submódulo:", [
