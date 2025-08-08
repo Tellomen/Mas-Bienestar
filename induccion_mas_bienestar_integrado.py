@@ -5,6 +5,7 @@ import os
 from io import BytesIO
 from PIL import Image
 from aplicativo_gitapps import aplicativo_gitapps
+from Gestion_Territorial import modulo_gestion_territorial
 
 # ------------------------- CONFIGURACIÓN DE PÁGINA --------------------------
 st.set_page_config(page_title="Inducción Más Bienestar", layout="wide")
@@ -196,7 +197,7 @@ else:
 if modulo == "Bienvenida y Entorno":
     modulo_entorno()
 elif modulo == "Gestión Territorial":
-    modulo_gestion_territorial()    
+    modulo_gestion_territorial() 
 elif modulo == "Aplicativo Gitapps":
     aplicativo_gitapps()
 elif modulo in modulos_perfil:
