@@ -1,4 +1,5 @@
-# ------------------------- MÓDULO GESTIÓN TERRITORIAL -----------------------
+import streamlit as st
+
 def modulo_gestion_territorial():
     st.markdown("""
     <div class='welcome-box'>
