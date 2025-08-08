@@ -110,25 +110,25 @@ def modulo_entorno():
     st.markdown("""
     <div class='welcome-box'>
         <h2>🌍 Bienvenido a los Equipos Mas Bienestar Para tu Hogar</h2>
-        <p><b>Bienvenido(a) al proceso de inducción  del programa Más Bienestar.</b></p>
+        <p><b>Bienvenido(a) al proceso de inducción del programa Más Bienestar.</b></p>
     </div>
     """, unsafe_allow_html=True)
 
-    # Video
+    # Video actualizado
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 10px; margin-bottom: 20px;'>
         <video width="1257" height="732" controls>
-            <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar.mp4" type="video/mp4">
+            <source src="https://raw.githubusercontent.com/Tellomen/Mas-Bienestar/main/Mas%20Bienestar%20ruralidad.mp4" type="video/mp4">
             Tu navegador no soporta la etiqueta de video.
         </video>
     </div>
     """, unsafe_allow_html=True)
 
-    # Plantilla Genially embebida centrada
+    # Plantilla Genially actualizada
     st.markdown("""
     <div style='display: flex; justify-content: center; margin-top: 20px;'>
-        <iframe title="Modulo de Bienvenida"
-            src="https://view.genial.ly/68913d5fcb9d97c53e1192d6"
+        <iframe title="Gestión Territorial"
+            src="https://view.genially.com/6893e9fda1dcf302e7411d14"
             width="1257"
             height="732"
             style="border: none; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
