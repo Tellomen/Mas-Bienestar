@@ -185,7 +185,7 @@ else:
         st.session_state["autenticado"] = False
         st.experimental_rerun()
 
-    opciones = ["Bienvenida y Entorno", "Evaluación"]
+    opciones = ["Bienvenida y Entorno", "Gestión Territorial", "Evaluación"]
     if perfil.upper() == "ADMINISTRADOR":
         opciones += list(modulos_perfil.keys()) + ["Aplicativo Gitapps"]
     elif perfil in modulos_perfil:
@@ -195,6 +195,8 @@ else:
 
 if modulo == "Bienvenida y Entorno":
     modulo_entorno()
+elif modulo == "Gestión Territorial":
+    modulo_gestion_territorial()    
 elif modulo == "Aplicativo Gitapps":
     aplicativo_gitapps()
 elif modulo in modulos_perfil:
